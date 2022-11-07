@@ -1,0 +1,13 @@
+parm ../newtop/comp.prmtop
+trajin nowat.nc
+reference ../newtop/comp.pdb
+rms reference :1-53@C1'
+rms reference out rmsd-pca.dat :1-53@C1'
+#rms reference out rms-tm6.dat :209-240@CA
+#rms reference out rms-tm3.dat :75-107@CA
+#rms reference out rms-tm5.dat :166-204@CA
+#rms reference mass nofit out rmsd-lig.dat :285&!@H=
+atomicfluct out rmsf.dat :1-53@C1' byres
+matrix correl :1-53@C1' name m1 out m1.dat byatom
+matrix covar :1-53@C1' name lig out lig.dat
+analyze matrix lig out evecs.dat vecs 40

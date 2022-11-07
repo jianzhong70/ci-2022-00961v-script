@@ -1,0 +1,38 @@
+parm ../newtop/comp.prmtop
+trajin nowat.nc
+radgyr out gry.dat :1-53&!@H=
+distance 37-48 :37@C4,N1 :48@C4,N1 out 37-48.dat
+distance 37-54 :37@C4,N1 :54@C6,N3 out 37-54.dat
+distance 48-54 :48@C4,N1 :54@C6,N3 out 48-54.dat
+distance 29-54 :29@C2,N7 :54@C2,N7 out 29-54.dat
+distance 36-54 :36@C2,N7 :54@SD out 36-54.dat
+
+pucker pucker8 :7@C1' :7@C2' :7@C3' :7@C4' :7@O4' out pucker8.agr range360
+pucker pucker29 :29@C1' :29@C2' :29@C3' :29@C4' :29@O4' out pucker29.agr range360
+pucker pucker37 :37@C1' :37@C2' :37@C3' :37@C4' :37@O4' out pucker37.agr range360
+pucker pucker48 :48@C1' :48@C2' :48@C3' :48@C4' :48@O4' out pucker48.agr range360
+surf :1-53 out surf.dat
+#distance 100-205 :100@NH1,NH2 :205@OE1,OE2 out 100-205.dat
+#distance 100-2052 :100@CA :205@CA out 100-2052.dat
+#distance 100-188 :100@NH1,NH2 :188@CG,CZ out 100-188.dat
+#dihedral 100chi1 :100@N :100@CA :100@CB :100@CG out 100chi1.dat
+#dihedral 205chi1 :205@N :205@CA :205@CB :205@CG out 205chi1.dat
+#distance 36-61 :36@CA :61@CA out 36-61.dat
+#distance 168-169 :168@O2G :169@O out 168-169.dat
+#distance 168-170 :168@O2B :170@O out 168-170.dat
+#secstruct :1-169 out dssp.gnu
+#radial rdf1.dat 0.5 15 :171@MG :172@O1B
+#radial rdf2.dat 0.5 15 :171@MG :172@O3B
+hbond  hb1 out hb1.dat donormask :1-53 acceptormask :54 dist 3.5 angle 120 \
+   avgout hb1-avghb.dat
+hbond  hb2 out hb2.dat donormask :54 acceptormask :1-53 dist 3.5 angle 120 \
+   avgout hb2-avghb.dat
+reference ../newtop/comp.pdb
+rms reference :1-53&!@H=
+rms reference out rmsd.dat :1-53&!@H=
+#rms reference out rms-tm6.dat :209-240@CA
+#rms reference out rms-tm3.dat :75-107@CA
+#rms reference out rms-tm5.dat :166-204@CA
+rms first mass nofit out rmsd-lig.dat :54&!@H=
+
+ 

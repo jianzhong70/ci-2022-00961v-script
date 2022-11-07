@@ -1,0 +1,4 @@
+parm comp_wat.prmtop
+strip :286-1242     #remove lipid, Na+ and Cl-
+strip :WAT
+outparm comp.prmtop

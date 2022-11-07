@@ -1,0 +1,24 @@
+parm ../newtop/comp.prmtop
+trajin nowat.nc
+rms first :1-53@C1'
+# Generate mass-weighted covariance matrix of all atoms,
+#   which is stored internally, and subsequently 
+#   analyzed (i.e. in total a quasiharmonic analysis is 
+#   performed)
+#
+#matrix covar :1-198@CA name lig out lig.dat
+#analyze matrix lig out evecs.dat vecs 40
+projection modes evecs.dat out project.dat beg 1 end 2 :1-53@C1'
+
+#matrix mwcovar name diz_mwcvmat out diz_mwcvmat.dat
+#analyze matrix diz_mwcvmat name evecs vecs 10
+#analyze modes fluct out rmsfluct.dat stack evecs beg 1 end 7
+#analyze modes displ out resdispl.dat stack evecs beg 1 end 7 
+#
+# Generate distance-covariance matrix of CA atoms,
+#   which is stored internally, and subsequently analyzed
+#   (i.e. a PCA in distance space is performed).
+#   Eigenvectors are then reduced.
+#
+#matrix distcovar :1-96@CA name diz_distcovarmat out diz_distcovarmat.dat
+#analyze matrix diz_distcovarmat out diz_distcovarmat_evecs.dat vecs 10 reduce
